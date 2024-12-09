@@ -86,11 +86,14 @@ class MainActivity : AppCompatActivity() {
 
             // async / concurrency
             // val section: List<Section> = NetworkApi().getHomeFeed()
-            val retrofit= NetworkModule.provideRetrofit()
-            val networkApi= retrofit.create(NetworkApi::class.java)
-            val response: Response<List<Section>> = networkApi.getHomeFeed().execute()
-            val sections: List<Section>? = response.body()
-            Log.d(TAG, sections.toString())
+            
+//            val retrofit= NetworkModule.provideRetrofit()
+//            val networkApi= retrofit.create(NetworkApi::class.java)
+//            val response: Response<List<Section>> = networkApi.getHomeFeed().execute()
+//            val sections: List<Section>? = response.body()
+//            Log.d(TAG, sections.toString())
+            val response = api.getHomeFeed().execute().body()
+            Log.d(TAG, response.toString())
 
         }
 
