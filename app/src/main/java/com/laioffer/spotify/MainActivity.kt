@@ -29,6 +29,9 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import coil.compose.AsyncImage
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.laioffer.spotify.datamodel.Section
+import com.laioffer.spotify.network.NetworkApi
+import com.laioffer.spotify.network.NetworkModule
 import com.laioffer.spotify.ui.theme.SpotifyTheme
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
@@ -44,6 +47,9 @@ import javax.inject.Inject
 class MainActivity : AppCompatActivity() {
 
     private val TAG = "lifecycle"
+
+    @Inject
+    lateinit var api: NetworkApi
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -76,6 +82,17 @@ class MainActivity : AppCompatActivity() {
         }
 
         // coroutine
+        GlobalScope.launch(Dispatchers.IO) {
+
+            // async / concurrency
+            // val section: List<Section> = NetworkApi().getHomeFeed()
+            val retrofit= NetworkModule.provideRetrofit()
+            val networkApi= retrofit.create(NetworkApi::class.java)
+            val response: Response<List<Section>> = networkApi.getHomeFeed().execute()
+            val sections: List<Section>? = response.body()
+            Log.d(TAG, sections.toString())
+
+        }
 
     }
 }
