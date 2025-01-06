@@ -1,6 +1,6 @@
-# MySpotify: A Kotlin-Based Favorites App
+# RapManiac: A Kotlin-Based Favorites App for sharing HipPop music
 
-MySpotify is a music player application built with Kotlin, designed to provide an exceptional user experience. The app optimizes performance and interaction through the integration of Hilt for dependency injection and Jetpack Compose for responsive UI. It also leverages Google ExoPlayer for seamless music playback and system stability.
+RapManiac is a music player application built with Kotlin, designed to provide an exceptional user experience. The app optimizes performance and interaction through the integration of Hilt for dependency injection and Jetpack Compose for responsive UI. It also leverages Google ExoPlayer for seamless music playback and system stability.
 
 ---
 
